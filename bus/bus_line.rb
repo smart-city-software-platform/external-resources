@@ -109,5 +109,8 @@ class BusList
 end
 
 list = BusList.new
-list.get_positions
+while true
+  list.get_positions
+  sleep 40
+end
 
