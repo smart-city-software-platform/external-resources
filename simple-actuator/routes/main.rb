@@ -24,9 +24,9 @@ class Example < ActuatorServer
     command = JSON.parse(request.body.read)['command']
     capability = command["capability"]
     value = command["value"]
-    actuator.send(capability, value)
+    @@actuator.send(capability.to_s + "=", value)
 
-    actuator.print_current_status
+    @@actuator.print_current_status
 
     #connections.each do |out|
       # notify client that a new message has arrived

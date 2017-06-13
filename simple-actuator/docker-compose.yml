@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  simple-actuator:
+    container_name: simple-actuator 
+    build: .
+    ports:
+      - 9292:9292
+    volumes:
+      - '.:/simple-actuator'
+    environment:
+      WEBHOOK_URL: 'http://simple-actuator:9292/actuate'
+      ADAPTOR_HOST: 'resource-adaptor:3000'
+
+networks:
+  default:
+    external:
+      name: platform 

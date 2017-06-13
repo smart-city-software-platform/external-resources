@@ -15,7 +15,8 @@ class SimpleActuator
     params.each do |key, value|
       instance_variable_set("@#{key}", value)
     end
-    self.url = "http://localhost:9292/actuate" unless self.url
+    env_url = ENV["WEBHOOK_URL"] || "http://simple-actuator:9292/actuate"
+    self.url = env_url unless self.url
     self.status = "active"
 		self.semaphore = "default"
 		self.illuminate = "default"
